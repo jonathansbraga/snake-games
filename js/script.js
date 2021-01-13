@@ -1,16 +1,16 @@
 let canvas = document.getElementById("snake");
 let context = canvas.getContext("2d");
-let box = 32;
+let box = 16;
 let direction = "right";
 
 let snake = [];
-snake[0] = {x: 2 * box, y: 2 * box};
+snake[0] = {x: 8 * box, y: 8 * box};
 
-let food = { x:Math.floor(Math.random() * 15 + 1) * box , y:Math.floor(Math.random() * 15 + 1) * box };
+let food = { x:Math.floor(Math.random() * 34 + 1) * box , y:Math.floor(Math.random() * 34 + 1) * box };
 
 function criarBG() {
     context.fillStyle = "lightgreen";
-    context.fillRect(0, 0, 20 * box, 20 * box);
+    context.fillRect(0, 0, 36 * box, 36 * box);
 }
 
 function criarCobrinha() {
@@ -36,10 +36,10 @@ function update(event) {
 
 function iniciarJogo() {
     
-    if(snake[0].x > 15 * box && direction == "right") snake[0].x = 0;
-    if(snake[0].x < 0 && direction == "left") snake[0].x = 16 * box;
-    if(snake[0].y > 15 * box && direction == "down") snake[0].y = 0;
-    if(snake[0].y < 0 && direction == "up") snake[0].y = 16 * box;
+    if(snake[0].x > 35 * box && direction == "right") snake[0].x = 0;
+    if(snake[0].x < 0 && direction == "left") snake[0].x = 35 * box;
+    if(snake[0].y > 35 * box && direction == "down") snake[0].y = 0;
+    if(snake[0].y < 0 && direction == "up") snake[0].y = 35 * box;
 
     for (let i = 1; i < snake.length; i++) {
         if (snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
@@ -64,8 +64,8 @@ function iniciarJogo() {
     if(snakeX != food.x || snakeY != food.y){
         snake.pop();
     } else {
-        food.x = Math.floor(Math.random() * 15 + 1) * box;
-        food.y = Math.floor(Math.random() * 15 + 1) * box;
+        food.x = Math.floor(Math.random() * 34 + 1) * box;
+        food.y = Math.floor(Math.random() * 34 + 1) * box;
     }
 
     let newHead = {x:snakeX , y:snakeY}
